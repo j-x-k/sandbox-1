@@ -10,4 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print the input tag to STDOUT
-        run: echo  The tag is ${{ github.event.inputs.environment }} and the secret is ${{ secrets.TEST_SECRET }}
+        env:
+          TEST_SECRET: ${{ secrets.TEST_SECRET }}
+        run: echo  The tag is [${{ github.event.inputs.environment }}] and the secret is [$TEST_SECRET] 
