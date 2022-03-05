@@ -6,11 +6,11 @@ on:
         type: environment
         required: true 
 jobs:
-  print-tag:
+  report:
     runs-on: ubuntu-latest
     environment: ${{ github.event.inputs.environment }}
     steps:
-      - name: Print the input tag to STDOUT
+      - name: Print to STDOUT
         env:
-          TEST_SECRET: ${{ secrets.TEST_SECRET }}
-        run: echo  The tag is [${{ github.event.inputs.environment }}] and the secret is [$TEST_SECRET] 
+          TEST_SECRET: ${{ toJSON('secrets.TEST_SECRET') }}
+        run: echo  The env is [${{ github.event.inputs.environment }}] and the key is [$TEST_SECRET] 
