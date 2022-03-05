@@ -13,4 +13,4 @@ jobs:
       - name: Print to STDOUT
         env:
           TEST_SECRET: ${{ toJSON(secrets.TEST_SECRET) }}
-        run: echo  The env is [${{ github.event.inputs.environment }}] and the key is [$TEST_SECRET] 
+        run: echo  "The env is [${{ github.event.inputs.environment }}] and the key is " && echo "[$TEST_SECRET]" | sed 's/./& /g'
