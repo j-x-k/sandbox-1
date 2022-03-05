@@ -2,7 +2,7 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Environment to run tests against'
+        description: 'Deployment target stage'
         type: environment
         required: true 
 jobs:
@@ -12,5 +12,5 @@ jobs:
     steps:
       - name: Print to STDOUT
         env:
-          TEST_SECRET: ${{ toJSON(secrets.TEST_SECRET) }}
+          TEST_SECRET: ${{ secrets.TEST_SECRET }}
         run: echo  "The env is [${{ github.event.inputs.environment }}] and the key is " && echo "[$TEST_SECRET]" | sed 's/./& /g'
